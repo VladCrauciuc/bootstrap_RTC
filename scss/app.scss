@@ -1,0 +1,10 @@
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
+@import url(../images/night1.jpg);
+
+body {
+  transition: background-image 1s ease-in-out;
+  background-image: url('../images/night2.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
