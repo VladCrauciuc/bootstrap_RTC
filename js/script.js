@@ -69,7 +69,7 @@ function checkTime() {
     document.body.style.backgroundImage = `url('../images/afternoon${afternoonSeed}.jpg')`;
     dayStyle();
   }
-  if (hour >= 18 && hour < 23) {
+  if (hour >= 18 && hour <= 23) {
     document.body.style.backgroundImage = `url('../images/night${nightSeed}.jpg')`;
     nightStyle();
   }
