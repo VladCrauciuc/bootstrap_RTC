@@ -8,10 +8,8 @@ const container = document.getElementById('container');
 const border = document.getElementById('border');
 
 // style spreads
-const darkContainerStyle = ['bg-white', 'bg-opacity-50'];
-const lightContainerStyle = ['bg-dark', 'bg-opacity-25'];
-const darkTextStyle = ['text-dark'];
-const lightTextStyle = ['text-white'];
+const darkContainerStyle = ['bg-white', 'text-dark'];
+const lightContainerStyle = ['bg-dark', 'text-white'];
 const darkBorderStyle = ['border-dark'];
 const lightBorderStyle = ['border-white'];
 
@@ -54,34 +52,33 @@ function addZero(n) {
   }
 }
 
+// seed numbers for random images - used in checkTime() below
+const morningSeed = Math.floor(Math.random() * 3 + 1);
+const afternoonSeed = Math.floor(Math.random() * 5 + 1);
+const nightSeed = Math.floor(Math.random() * 3 + 1);
+
 //  check time for background and style changes - hoisted to showTime()
 function checkTime() {
   let today = new Date();
   let hour = today.getHours();
   if (hour >= 0 && hour < 12) {
-    document.body.style.backgroundImage = "url('../images/morning1.jpg')";
+    document.body.style.backgroundImage = `url('../images/morning${morningSeed}.jpg')`;
     dayStyle();
   }
   if (hour >= 12 && hour < 18) {
-    document.body.style.backgroundImage = "url('../images/afternoon1.jpg')";
+    document.body.style.backgroundImage = `url('../images/afternoon${afternoonSeed}.jpg')`;
     dayStyle();
   }
   if (hour >= 18 && hour < 23) {
-    document.body.style.backgroundImage = "url('../images/night1.jpg')";
+    document.body.style.backgroundImage = `url('../images/night${nightSeed}.jpg')`;
     nightStyle();
   }
 }
 
-// day stylying - hoisted to checkTime()
+// day styling - hoisted to checkTime()
 function dayStyle() {
   container.classList.remove(...darkContainerStyle);
   container.classList.add(...lightContainerStyle);
-  time.classList.remove(...darkTextStyle);
-  time.classList.add(...lightTextStyle);
-  greeting.classList.remove(...darkTextStyle);
-  greeting.classList.add(...lightTextStyle);
-  quote.classList.remove(...darkTextStyle);
-  quote.classList.add(...lightTextStyle);
   border.classList.remove(...darkBorderStyle);
   border.classList.add(...lightBorderStyle);
 }
@@ -90,16 +87,9 @@ function dayStyle() {
 function nightStyle() {
   container.classList.remove(...lightContainerStyle);
   container.classList.add(...darkContainerStyle);
-  time.classList.remove(...lightTextStyle);
-  time.classList.add(...darkTextStyle);
-  greeting.classList.remove(...lightTextStyle);
-  greeting.classList.add(...darkTextStyle);
-  quote.classList.remove(...lightTextStyle);
-  quote.classList.add(...darkTextStyle);
   border.classList.remove(...lightBorderStyle);
   border.classList.add(...darkBorderStyle);
 }
 
 // RUN
 showTime();
-checkStyle();
